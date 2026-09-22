@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NAYLA - Visual Designer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+html{scroll-behavior:smooth}
+.lightbox-overlay{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:9999;padding:6vw;cursor:zoom-out}
+.lightbox-overlay.show{display:flex}
+.lightbox-overlay img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.6);border-radius:4px}
+.lightbox-close{position:fixed;top:24px;right:24px;z-index:10000;width:44px;height:44px;border:none;background:transparent;color:#fff;font-size:40px;line-height:1;cursor:pointer}
+.lightbox-close:hover{color:#E51B23}
+.aspect-\[4\/3\]{position:relative}
+.photo-overlay{position:absolute;inset:0;background:#fff;opacity:.6;pointer-events:none;z-index:2;transition:opacity .3s ease}
+.group:hover .photo-overlay{opacity:0}
+</style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#e5e2e1",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-container": "#ffc5be",
+                      "on-surface": "#271716",
+                      "tertiary-fixed": "#d5e3ff",
+                      "on-primary-fixed-variant": "#93000c",
+                      "surface-variant": "#fadcd8",
+                      "divider-subtle": "#D7CEC5",
+                      "background": "#fff8f7",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed": "#e5e2e1",
+                      "accent-red": "#E51B23",
+                      "surface-container-highest": "#fadcd8",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#410002",
+                      "outline": "#906f6c",
+                      "on-error": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "text-muted": "#6B625C",
+                      "on-tertiary-fixed-variant": "#004689",
+                      "surface-bright": "#fff8f7",
+                      "warm-canvas": "#F4EFE8",
+                      "surface": "#fff8f7",
+                      "on-background": "#271716",
+                      "on-secondary-container": "#656464",
+                      "on-surface-variant": "#5b403d",
+                      "primary-fixed-dim": "#ffb4ab",
+                      "inverse-on-surface": "#ffedea",
+                      "on-secondary-fixed-variant": "#474646",
+                      "on-tertiary-container": "#bbd3ff",
+                      "inverse-surface": "#3e2c2a",
+                      "on-error-container": "#93000a",
+                      "surface-alt": "#FFFFFF",
+                      "on-tertiary-fixed": "#001b3c",
+                      "on-secondary-fixed": "#1c1b1b",
+                      "surface-container": "#ffe9e6",
+                      "surface-tint": "#bb181b",
+                      "primary-container": "#b51218",
+                      "tertiary-container": "#005aac",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#ffdad6",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#ffe2de",
+                      "inverse-primary": "#ffb4ab",
+                      "primary": "#8c000b",
+                      "surface-dim": "#f1d3d0",
+                      "secondary-fixed-dim": "#c9c6c5",
+                      "secondary": "#5f5e5e",
+                      "surface-container-low": "#fff0ee",
+                      "outline-variant": "#e4beb9",
+                      "tertiary-fixed-dim": "#a7c8ff",
+                      "tertiary": "#004382"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "gutter": "16px",
+                      "editorial-gap": "96px",
+                      "max-width": "1440px",
+                      "margin-safe": "24px",
+                      "section-desktop": "80px",
+                      "section-mobile": "48px"
+              },
+              "fontFamily": {
+                      "display-xl": [
+                              "Anton"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "body-lg": [
+                              "Geist"
+                      ],
+                      "headline-md": [
+                              "Anton"
+                      ],
+                      "label-caps": [
+                              "Geist"
+                      ],
+                      "display-xl-mobile": [
+                              "Anton"
+                      ],
+                      "label-sm": [
+                              "Geist"
+                      ],
+                      "headline-lg": [
+                              "Anton"
+                      ],
+                      "headline-lg-mobile": [
+                              "Anton"
+                      ]
+              },
+              "fontSize": {
+                      "display-xl": [
+                              "96px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-xl-mobile": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "56px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+      </style>
+</head>
+<body class="bg-[#2D371D] text-on-surface antialiased overflow-x-hidden selection:bg-primary-container selection:text-white">
+<!-- TopNavBar -->
+<nav class="docked full-width top-0 z-50 bg-[#2D371D] border-b border-divider-subtle transition-all duration-200 ease-in-out hidden md:flex">
+<div class="flex justify-between items-center px-gutter py-4 w-full max-w-max-width mx-auto">
+<a class="font-headline-md text-headline-md text-[#D2DB76] uppercase tracking-tighter hover:text-primary transition-colors duration-200" href="#">DKV</a>
+<div class="flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-[#D2DB76] hover:text-primary transition-colors duration-200" href="#">About</a>
+<a class="font-label-caps text-label-caps text-[#D2DB76] border-b-2 border-[#D2DB76] pb-1" href="#">Works</a>
+<a class="font-label-caps text-label-caps text-[#D2DB76] hover:text-primary transition-colors duration-200" href="#">Skills</a>
+<a class="font-label-caps text-label-caps text-[#D2DB76] hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</div>
+<a class="font-label-caps text-label-caps bg-primary-container text-white px-6 py-3 rounded hover:bg-accent-red transition-colors duration-200" href="#">Hire Me</a>
+</div>
+</nav>
+<!-- Mobile Nav (Simplified) -->
+<nav class="md:hidden flex justify-between items-center px-gutter py-4 border-b border-divider-subtle bg-[#2D371D] sticky top-0 z-50">
+<a class="font-headline-md text-headline-md text-[#D2DB76] uppercase tracking-tighter" href="#">DKV</a>
+<button class="text-[#D2DB76]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</nav>
+<main class="max-w-max-width mx-auto">
+<!-- Hero Section -->
+<section class="min-h-[921px] flex flex-col md:flex-row items-center px-gutter py-section-mobile md:py-section-desktop relative mb-editorial-gap bg-[#2D371D]">
+<div class="w-full md:w-1/2 z-10 flex flex-col items-start gap-8 relative">
+<span class="font-display-xl uppercase text-[#D2DB76] text-[32px] leading-none tracking-[0.25em] md:text-[48px]">Portofolio</span>
+<h1 style="letter-spacing:0.08em" class="font-display-xl-mobile text-display-xl-mobile md:font-display-xl md:text-display-xl uppercase text-[#FFF8EB] relative z-20">NAYLA RAHMA IFTA AULIA</h1>
+<div class="w-24 h-1 bg-[#D2DB76]"></div>
+<p class="font-body-lg text-body-lg text-[#FFF8EB] max-w-md">Visual designer exploring design, photography, illustration, and editing.</p>
+<a class="font-label-caps text-label-caps bg-[#D2DB76] text-white px-8 py-4 rounded hover:bg-accent-red transition-colors duration-200 mt-4" href="#editing">View My Work</a>
+</div>
+<div class="w-full md:w-1/2 h-[614px] md:h-[819px] relative mt-12 md:mt-0">
+<div class="absolute inset-0 bg-[#D2DB76] transform translate-x-4 translate-y-4 md:translate-x-8 md:translate-y-8 z-0"></div>
+<img class="w-full h-full object-cover relative z-10 grayscale hover:grayscale-0 transition-all duration-500" data-alt="A striking portrait of a young, creative female visual designer in a minimalist studio. High contrast lighting, raw editorial style, wearing contemporary avant-garde fashion. The background is a clean warm off-white, emphasizing her artistic presence." src="../../image/WhatsApp Image 2026-09-16 at 11.01.10.jpeg"/>
+</div>
+</section>
+<!-- Daftar Karya (List) -->
+<section class="px-gutter mb-editorial-gap bg-[#2D371D] text-[#D2DB76]" id="diri-saya">
+<div class="flex items-end justify-between border-b border-divider-subtle pb-4 mb-12">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg uppercase tracking-[0.12em]">Diri Saya</h2>
+<span class="font-label-caps text-label-caps text-[#D2DB76]">About Me</span>
+</div>
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="w-full md:w-3/5">
+<p class="font-body-lg text-body-lg text-[#FFF8EB] leading-loose mb-8">Halo, saya Nayla Rahma Ifta Aulia, siswa jurusan Desain Komunikasi Visual yang pecinta visual — baik itu desain, fotografi, ilustrasi, maupun editing. Saya senang mengubah ide menjadi cerita visual yang tidak hanya indah, tetapi juga memiliki makna dan karakter.</p>
+<p class="font-body-md text-body-md text-text-muted leading-loose mb-8">Setiap karya yang saya buat lahir dari rasa ingin tahu dan ketelitian. Saya percaya bahwa proses lebih penting daripada hasil akhir — riset, eksplorasi, dan keberanian untuk mencoba hal baru selalu menjadi bagian dari perjalanan kreatif saya.</p>
+<p class="font-body-md text-body-md text-text-muted leading-loose mb-8">Di luar aktivitas kuliah, saya aktif mendalami tren desain dan teknologi terbaru agar karya yang saya hasilkan tetap relevan. Tujuan saya sederhana: membuat visual yang tidak hanya enak dilihat, tetapi juga mampu berbicara kepada setiap orang yang melihatnya.</p>
+<div class="w-24 h-1 bg-[#D2DB76]"></div>
+<div class="mt-4 flex items-center justify-center overflow-hidden rounded-sm" style="width:8cm;height:3cm"></div>
+</div>
+</div>
+</section>
+<!-- Editing Section -->
+<section class="px-gutter mb-editorial-gap bg-[#2D371D] text-[#D2DB76]" id="editing">
+<div class="flex items-end justify-between border-b border-divider-subtle pb-4 mb-12">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg uppercase tracking-[0.12em]">Selected Works</h2>
+<span class="font-label-caps text-label-caps text-[#D2DB76]">Portfolio</span>
+</div>
+<h3 class="font-headline-md text-headline-md uppercase text-[#D2DB76] mb-10">Editing</h3>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-y-24">
+<div class="md:col-span-12">
+<div class="flex gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Typography design work." src="../image/TYPOGRAFI.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Series A</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Video Editing</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Poster design work." src="../image/POSTER%20FANTA.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Series B</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Story design work." src="../image/Story%20(1).jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Series D</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Illustration</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Poster design work." src="../image/Poster%2010%20November.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Series E</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Video Editing</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Poster design work." src="../image/Finish%20Poster%20Museum%2010%20November.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Series F</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Field poster design work." src="../image/lapangan%20%20%2845.5%20x%2026%20cm%29_20251121_125340_0000_page-0001%20%281%29.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Series G</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+
+</div>
+</div>
+<div class="md:col-span-7 group cursor-pointer">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Editing Sosial Media</h3>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth md:mt-20">
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Instagram post design work." src="../image/Pink%20Orange%20and%20Neutral%20Flat%20Lifestyle%20Collage%20Instagram%20Post.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Editing 01</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Instagram feed design work." src="../image/ITS%20FEED%20(2).jpg.jpeg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Editing 02</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Instagram feed design work." src="../image/ITS%20FEED%20(5).jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Editing 03</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Illustration</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Instagram feed design work." src="../image/ITS%20FEED%20-%2031.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Editing 04</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Video Editing</span>
+</div>
+</div>
+
+</div>
+</section>
+<!-- Editing Sosial Media Section -->
+<section class="px-gutter mb-editorial-gap bg-[#2D371D] text-[#D2DB76]" id="editing-sosial-media">
+<h3 class="font-headline-md text-headline-md uppercase text-[#D2DB76] mb-10">Photography</h3>
+<div class="flex gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/WhatsApp%20Image%202026-04-27%20at%2009.29.06%20(1).jpeg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 1</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/WhatsApp%20Image%202026-04-27%20at%2009.29.11%20(2).jpeg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 2</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/tugas%20pak%20fidan%2016.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 3</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Video Editing</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/WhatsApp%20Image%202026-09-15%20at%2019.08.05.jpeg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 4</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Illustration</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/WhatsApp%20Image%202026-09-18%20at%2014.36.56.jpeg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 5</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/IMG_20241120_092011.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 6</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/WhatsApp%20Image%202026-09-15%20at%2018.54.04.jpeg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 7</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Video Editing</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/IMG_20241120_134837.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 8</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Illustration</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/IMG_20241026_132332.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 9</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/udah%20di%20edit.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 10</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/IMG_0127.JPG"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 11</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Video Editing</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/DSC00851.JPG"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 12</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/DSC09963.JPG"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 13</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Photography work." src="../image/DSC03023.JPG"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Photografi 14</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Illustration</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Logo Section -->
+<section class="px-gutter mb-editorial-gap bg-[#2D371D] text-[#D2DB76]" id="logo">
+<h3 class="font-headline-md text-headline-md uppercase text-[#D2DB76] mb-10">Nirmana</h3>
+<div class="flex gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Nirmana work." src="../image/WhatsApp%20Image%202026-08-27%20at%2008.31.17.jpeg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Nirmana 1</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Nirmana work." src="../image/nirmana%20dg%20ai.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Nirmana 2</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Nirmana work." src="../image/nirmana%20titik%20digital.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Nirmana 3</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Illustration</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Nirmana work." src="../image/naylarahmaiftaaulia%20tugas%20nirmana.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Nirmana 4</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Video Editing</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Nirmana work." src="../image/WhatsApp%20Image%202026-04-27%20at%2004.55.26.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Nirmana 5</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Nirmana 2 Section -->
+<section class="px-gutter mb-editorial-gap bg-[#2D371D] text-[#D2DB76]" id="nirmana2">
+<h3 class="font-headline-md text-headline-md uppercase text-[#D2DB76] mb-10">Ilustrasi dan Logo</h3>
+<div class="flex gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Ilustrasi work." src="../image/bunglon%20crop.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Ilustrasi 1</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Ilustrasi work." src="../image/tracing%20karaakter%20supersus.png"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Ilustrasi 2</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Ilustrasi work." src="../image/DESAIN%20KAOS%20NAY%201.png"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Ilustrasi 3</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Illustration</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Logo work." src="../image/logo%20oska%20font%20beda.jpg"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Logo 1</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Video Editing</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Logo work." src="../image/logo%20packaging.png"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Logo 2</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Photography</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Mock Up Section -->
+<section class="px-gutter mb-editorial-gap bg-[#2D371D] text-[#D2DB76]" id="mockup">
+<h3 class="font-headline-md text-headline-md uppercase text-[#D2DB76] mb-10">Mock Up</h3>
+<div class="flex gap-8 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth">
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Mock up work." src="../image/ChatGPT%20Image%20Mar%2010%2C%202026%2C%2006_08_05%20AM.png"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Mock Up 1</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Mock up work." src="../image/ChatGPT%20Image%2010%20Mar%202026%2C%2005.20.02.png"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Mock Up 2</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Mock up work." src="../image/ChatGPT%20Image%2010%20Mar%202026%2C%2005.17.57.png"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Mock Up 3</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+<div class="w-[300px] shrink-0 snap-start group cursor-pointer">
+<div class="overflow-hidden bg-secondary-container mb-4 aspect-[4/3]">
+<img class="w-full h-full object-cover hover-scale" data-alt="Mock up work." src="../image/Perlengkapan%20pelindung%20OSKA%20berwarna%20biru.png"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md mb-2">Mock Up 4</h3>
+<span class="font-label-caps text-label-caps text-[#D2DB76] block">Graphic Design</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="px-gutter mb-editorial-gap bg-[#2D371D] text-[#D2DB76]">
+<div class="border-t border-divider-subtle pt-12">
+<h2 class="font-headline-md text-headline-md uppercase mb-8">Capabilities</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+<div class="border-b border-divider-subtle py-6 hover:pl-4 transition-all duration-300 group cursor-default flex justify-between items-center">
+<a href="#editing" class="font-headline-md text-headline-md group-hover:text-primary transition-colors cursor-pointer">Editing</a>
+<span class="font-label-sm text-label-sm text-text-muted opacity-0 group-hover:opacity-100 transition-opacity">Layout / Branding</span>
+</div>
+<div class="border-b border-divider-subtle py-6 hover:pl-4 transition-all duration-300 group cursor-default flex justify-between items-center">
+<a href="#logo" class="font-headline-md text-headline-md group-hover:text-primary transition-colors cursor-pointer">Nirmana</a>
+<span class="font-label-sm text-label-sm text-text-muted opacity-0 group-hover:opacity-100 transition-opacity">Studio / Editorial</span>
+</div>
+<div class="border-b border-divider-subtle py-6 hover:pl-4 transition-all duration-300 group cursor-default flex justify-between items-center">
+<a href="#editing-sosial-media" class="font-headline-md text-headline-md group-hover:text-primary transition-colors cursor-pointer">Editing Sosial Media</a>
+<span class="font-label-sm text-label-sm text-text-muted opacity-0 group-hover:opacity-100 transition-opacity">Vector / Sketch</span>
+</div>
+<div class="border-b border-divider-subtle py-6 hover:pl-4 transition-all duration-300 group cursor-default flex justify-between items-center">
+<a href="#nirmana2" class="font-headline-md text-headline-md group-hover:text-primary transition-colors cursor-pointer">Ilustrasi dan Logo</a>
+<span class="font-label-sm text-label-sm text-text-muted opacity-0 group-hover:opacity-100 transition-opacity">Retouching / Color</span>
+</div>
+<div class="border-b border-divider-subtle py-6 hover:pl-4 transition-all duration-300 group cursor-default flex justify-between items-center">
+<a href="#editing-sosial-media" class="font-headline-md text-headline-md group-hover:text-primary transition-colors cursor-pointer">Photography</a>
+<span class="font-label-sm text-label-sm text-text-muted opacity-0 group-hover:opacity-100 transition-opacity">Premiere / Resolve</span>
+</div>
+<div class="border-b border-divider-subtle py-6 hover:pl-4 transition-all duration-300 group cursor-default flex justify-between items-center">
+<a href="#mockup" class="font-headline-md text-headline-md group-hover:text-primary transition-colors cursor-pointer">Mock Up</a>
+<span class="font-label-sm text-label-sm text-text-muted opacity-0 group-hover:opacity-100 transition-opacity">Social / Web</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="bg-[#D2DB76] text-white px-gutter py-section-desktop mt-24 w-screen relative left-1/2 -translate-x-1/2">
+<div class="max-w-max-width mx-auto flex flex-col items-center text-center">
+<h2 class="font-display-xl-mobile text-display-xl-mobile md:font-display-xl md:text-display-xl uppercase mb-12 max-w-4xl text-[#2D371D]">LET'S CREATE SOMETHING VISUAL</h2>
+<div class="flex gap-8">
+<a class="font-label-caps text-label-caps text-[#2D371D] hover:text-white transition-colors border-b border-[#2D371D] pb-1" href="#">Email Me</a>
+<a class="font-label-caps text-label-caps text-[#2D371D] hover:text-white transition-colors border-b border-[#2D371D] pb-1" href="#">Instagram</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="full-width bottom-0 bg-on-background w-full py-section-mobile md:py-section-desktop px-gutter flex flex-col md:flex-row justify-between items-center gap-base">
+<span class="font-headline-lg text-headline-lg text-on-primary">DKV</span>
+<div class="flex gap-6">
+<a class="font-label-sm text-label-sm text-on-secondary hover:text-primary-fixed-dim transition-colors snappy 200ms ease" href="#">Instagram</a>
+<a class="font-label-sm text-label-sm text-on-secondary hover:text-primary-fixed-dim transition-colors snappy 200ms ease" href="#">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-secondary hover:text-primary-fixed-dim transition-colors snappy 200ms ease" href="#">Behance</a>
+<a class="font-label-sm text-label-sm text-on-secondary hover:text-primary-fixed-dim transition-colors snappy 200ms ease" href="#">Email</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-secondary">© 2024 DKV Portfolio. Built for Creative Editorial.</p>
+</footer>
+<div aria-hidden="true" class="lightbox-overlay" id="lightbox">
+<button aria-label="Tutup" class="lightbox-close" id="lightbox-close" type="button">×</button>
+<img alt="" id="lightbox-img"/>
+</div>
+<script>
+(function(){
+var lb=document.getElementById('lightbox'),img=document.getElementById('lightbox-img'),close=document.getElementById('lightbox-close');
+function openLb(src){img.src=src;lb.classList.add('show');}
+function closeLb(){lb.classList.remove('show');img.src='';}
+close.addEventListener('click',closeLb);
+lb.addEventListener('click',function(e){if(e.target===lb||e.target===img){closeLb();}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeLb();}});
+document.querySelectorAll('#editing img, #editing-sosial-media img, #logo img, #nirmana2 img, #mockup img').forEach(function(el){el.style.cursor='zoom-in';el.addEventListener('click',function(e){e.stopPropagation();openLb(el.currentSrc||el.src);});if(el.parentElement&&!el.parentElement.querySelector('.photo-overlay')){var o=document.createElement('div');o.className='photo-overlay';el.parentElement.appendChild(o);}});
+})();
+</script>
+</body></html>
